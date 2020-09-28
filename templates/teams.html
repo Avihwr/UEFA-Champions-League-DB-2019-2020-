@@ -1,0 +1,122 @@
+{% extends 'base.html' %}
+{% block styles %}
+    h1{
+    font-size: 30px;
+    color: #fff;
+    text-transform: uppercase;
+    font-weight: 300;
+    text-align: center;
+    margin-bottom: 15px;
+    }
+    table{
+    padding: 15px;
+    width:100%;
+    table-layout: fixed;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    }
+    .tbl-header{
+    background-color: darkblue;
+    opacity: 0.8;
+    }
+    .tbl-content{
+    height:600px;
+    overflow-x:auto;
+    margin-top: 0px;
+    border: 1px solid rgba(255,255,255,0.3);
+    }
+    th{
+    padding: 20px 15px;
+    text-align: left;
+    font-weight: 500;
+    font-size: 12px;
+    color: #fff;
+    text-transform: uppercase;
+    }
+    td{
+    padding: 15px;
+    text-align: left;
+    vertical-align:middle;
+    font-weight: 300;
+    font-size: 12px;
+    color: #fff;
+    border-bottom: solid 1px rgba(255,255,255,0.1);
+    }
+
+
+    /* demo styles */
+
+    @import url(https://fonts.googleapis.com/css?family=Roboto:400,500,300,700);
+    body{
+    background: -webkit-linear-gradient(left, #25c481, #25b7c4);
+    background: linear-gradient(to right, #25c481, #25b7c4);
+    font-family: 'Roboto', sans-serif;
+    }
+    section{
+    margin: 50px;
+    }
+
+    /* for custom scrollbar for webkit browser*/
+
+    ::-webkit-scrollbar {
+    width: 6px;
+    }
+    ::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+    }
+    ::-webkit-scrollbar-thumb {
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+    }
+
+{% endblock %}
+{% block body %}
+    <h1 style="text-shadow: 0 0 15px #FF0000; color: dodgerblue">Top Teams</h1>
+    <div class="tbl-header">
+    <div class="tbl-header">
+        <table>
+            <thead style="background-color: darkblue; opacity: 0.8">
+            <tr>
+                <th scope="col">No.</th>
+                <th scope="col">Name</th>
+                <th scope="col">Group</th>
+                <th scope="col">Goals</th>
+                <th scope="col">Market Value</th>
+                <th scope="col">Manager</th>
+            </tr>
+            </thead>
+        </table>
+    </div>
+    <div class="tbl-content">
+    <table>
+        <tbody>
+        {% for team in teams %}
+            <tr>
+                <th scope="row">{{ forloop.counter }}</th>
+                <td>
+                    <div class="w-25" style=" display: initial;">
+                        {% if team.img %}
+                            <img style="height: auto; width: 60px; size: auto" src="{{ team.img.url }}"
+                        {% else %}
+                            <img style="height: auto; width: 70px; size: auto" src="/static/"
+                        {% endif %}
+                                 class="img-fluid-sm img-thumbnail-rounded float-center" alt="Sheep">
+                    </div>
+                    <span>{{ team.Club_Name }}</span>
+                </td>
+                <td>{{ team.Relation }}</td>
+                <td>{{ team.Goals }}</td>
+                <td>{{ team.Market_Value }}</td>
+                <td>
+                    <div class="img-rounded" style=" display: initial;">
+                        <img style="height: auto; width: 30px; size: auto" src="http:{{ team.Club_Manager.img.url }}"
+                             class="img-fluid-sm img-thumbnail-rounded float-center" alt="Sheep">
+                    </div>
+                    {{ team.Club_Manager }}
+                    {#                                            <hr style="height:2px;border-width:0;color:skyblue;background-color:skyblue">#}
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+        </table>
+    </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,201 @@
+{% extends 'base.html' %}
+{% block body %}
+    <div class="container-fluid ">
+        <div class="row ml-5">
+            <div class="col-lg-4 d-flex align-items-stretch">
+                <div class="card border-light bg-transparent mb-3"
+                     style="background-color: rgba(0,0,75,0.7)!important; max-width: 18rem; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);">
+                    <div class="card-header bg-transparent"><span style="color: white">Top Teams</span></div>
+                    <div class="card-body text-light">
+                        <div class="col md-4">
+                            <table class="table-responsive" style="color: white">
+                                <tbody>
+                                {% for topteam in topteams %}
+                                    <tr>
+                                        <td>
+                                            <div class="img-rounded" style=" display: initial;">
+                                                {% if topteam.img %}
+                                                    <img style="height: auto; width: 30px; size: auto"
+                                                         src="http:{{ topteam.img.url }}"
+                                                         class="img-fluid-sm img-thumbnail-rounded float-center"
+                                                         alt="Sheep">
+                                                {% else %}
+                                                    <img style="height: auto; width: 30px; size: auto"
+                                                         src="http:{{ topteam.img.url }}"
+                                                         class="img-fluid-sm img-thumbnail float-center" alt="Sheep">
+                                                {% endif %}
+                                            </div>
+                                            {{ topteam.Club_Name }}
+                                            <hr style="height:2px;border-width:0;color:skyblue;background-color:skyblue">
+                                        </td>
+                                    </tr>
+                                {% endfor %}
+                                </tbody>
+                            </table>
+
+                            <a type="button" href="{% url 'teams' %}" class="btn btn bg-transparent">Show more</a>
+
+
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            <div class="col-lg-4 d-flex align-items-stretch">
+                <div class="card border-light bg-transparent mb-3"
+                     style="background-color: rgba(0,0,75,.7)!important; max-width: 18rem; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);">
+                    <div class="card-header bg-transparent"><span style="color: white">Top Players</span></div>
+                    <div class="card-body text-light">
+                        <div class="col md-4">
+                            <table class="table-responsive" style="color: white">
+                                <tbody>
+                                {% for topplayer in topplayers %}
+                                    <tr>
+                                        <td>
+                                            <div class="img-rounded" style=" display: initial;">
+                                                <img style="height: auto; width: 30px; size: auto"
+                                                     src="http:{{ topplayer.imgsrc }}"
+                                                     class="img-fluid-sm img-thumbnail float-center" alt="Sheep">
+                                            </div>
+                                            {{ topplayer.Name }}
+                                            <hr style="height:2px;border-width:0;color:skyblue;background-color:skyblue">
+                                        </td>
+                                    </tr>
+                                {% endfor %}
+                                </tbody>
+                            </table>
+                                                    <a type="button" href="{% url 'player' %}" class="btn btn bg-transparent">Show more</a>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 d-flex align-items-stretch">
+                <div class="card border-light bg-transparent mb-3"
+                     style="background-color: rgba(0,0,75,.7)!important; max-width: 18rem; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);">
+                    <div class="card-header bg-transparent"><span style="color: white">Top Scorers</span></div>
+                    <div class="card-body text-light">
+                        <div class="col md-4">
+                            <table class="table-responsive" style="color: white">
+                                <tbody>
+                                {% for topscorer in topscorers %}
+                                    <tr>
+                                        <td>
+                                            <div class="img-rounded" style=" display: initial;">
+                                                <img style="height: auto; width: 30px; size: auto"
+                                                     src="http:{{ topscorer.imgsrc }}"
+                                                     class="img-fluid-sm img-thumbnail float-center" alt="Sheep">
+                                            </div>
+                                            {{ topscorer.Name }}
+                                            <hr style="height:2px;border-width:0;color:skyblue;background-color:skyblue">
+                                        </td>
+                                    </tr>
+                                {% endfor %}
+                                </tbody>
+                            </table>
+                                                    <a type="button" href="{% url 'top_scorer' %}" class="btn btn bg-transparent">Show more</a>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 d-flex align-items-stretch">
+                <div class="card border-light bg-transparent mb-3"
+                     style="background-color: rgba(0,0,75,.7)!important; max-width: 18rem; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);">
+                    <div class="card-header bg-transparent"><span style="color: white">Top Managers</span></div>
+                    <div class="card-body text-light">
+                        <div class="col md-4">
+                            <table class="table-responsive" style="color: white">
+                                <tbody>
+                                {% for manager in managers %}
+                                    <tr>
+                                        <td>
+                                            <div class="img-rounded" style=" display: initial;">
+                                                <img style="height: auto; width: 30px; size: auto"
+                                                     src="http:{{ manager.img.url }}"
+                                                     class="img-fluid-sm img-thumbnail float-center" alt="Sheep">
+                                            </div>
+                                            {{ manager.Manager_name }}
+                                            <hr style="height:2px;border-width:0;color:skyblue;background-color:skyblue">
+                                        </td>
+                                    </tr>
+                                {% endfor %}
+                                </tbody>
+                            </table>
+                                                    <a type="button" href="{% url 'managers' %}" class="btn btn bg-transparent">Show more</a>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+             <div class="col-lg-4 d-flex align-items-stretch">
+                <div class="card border-light bg-transparent mb-3"
+                     style="background-color: rgba(0,0,75,.7)!important; max-width: 18rem; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);">
+                    <div class="card-header bg-transparent"><span style="color: white">Most Valuable Players</span></div>
+                    <div class="card-body text-light">
+                        <div class="col md-4">
+                            <table class="table-responsive" style="color: white">
+                                <tbody>
+                                {% for mostvaluableplayer in mostvaluableplayers %}
+                                    <tr>
+                                        <td>
+                                            <div class="img-rounded" style=" display: initial;">
+                                                <img style="height: auto; width: 30px; size: auto"
+                                                     src="http:{{ mostvaluableplayer.imgsrc }}"
+                                                     class="img-fluid-sm img-thumbnail float-center" alt="Sheep">
+                                            </div>
+                                            {{ mostvaluableplayer.Name }}
+                                            <hr style="height:2px;border-width:0;color:skyblue;background-color:skyblue">
+                                        </td>
+                                    </tr>
+                                {% endfor %}
+                                </tbody>
+                            </table>
+ <a type="button" href="{% url 'mvp' %}" class="btn btn bg-transparent">Show more</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 d-flex align-items-stretch">
+                <div class="card border-light bg-transparent mb-3"
+                     style="background-color: rgba(0,0,75,.7)!important; max-width: 18rem; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);">
+                    <div class="card-header bg-transparent"><span style="color: white">Most Valuable Teams</span></div>
+                    <div class="card-body text-light">
+                        <div class="col md-4">
+                            <table class="table-responsive" style="color: white">
+                                <tbody>
+                                {% for mostvaluableteam in mostvaluableteams %}
+                                    <tr>
+                                        <td>
+                                            <div class="img-rounded" style=" display: initial;">
+                                                {% if topteam.img %}
+                                                    <img style="height: auto; width: 30px; size: auto"
+                                                         src="http:{{ mostvaluableteam.img.url }}"
+                                                         class="img-fluid-sm img-thumbnail-rounded float-center"
+                                                         alt="Sheep">
+                                                {% else %}
+                                                    <img style="height: auto; width: 30px; size: auto"
+                                                         src="http:{{ mostvaluableteam.img.url }}"
+                                                         class="img-fluid-sm img-thumbnail float-center" alt="Sheep">
+                                                {% endif %}
+                                            </div>
+                                            {{ mostvaluableteam.Club_Name }}
+                                            <hr style="height:2px;border-width:0;color:skyblue;background-color:skyblue">
+                                        </td>
+                                    </tr>
+                                {% endfor %}
+                                </tbody>
+                            </table>
+
+
+ <a type="button" href="{% url 'mvt' %}" class="btn btn bg-transparent">Show more</a>
+
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
